@@ -1,0 +1,38 @@
+extends base
+
+block head
+  link(rel='stylesheet', href='/css/login.css')
+
+block content
+  header
+    if user
+      nav.nav
+        a.nav__el(href="/") #{user.name.split(' ')[0]}
+        a.nav__el(href="#") About
+        a.logoutForm.nav__el(href="#") Logout
+    else
+      nav.nav
+        a.nav__el(href="/") Home
+        a.nav__el(href="#") About
+        a.nav__el(href="#") Login 
+        a.nav__el(href="#") Signup 
+
+  main.main
+    .login-form
+      h2.heading-secondary.ma-bt-lg Log into your account
+      form.form.form--login(action="/login", method="POST")
+        .form__group
+          label.form__label(for="email") Email address
+          input#email.form__input(type="email", name="email", placeholder="you@example.com", required)
+        .form__group.ma-bt-md
+          label.form__label(for="password") Password
+          input#password.form__input(type="password", name="password", placeholder="••••••••", required, minlength="8")
+        .form__group
+          button.btn.btn--green(type="submit") Login
+
+  footer
+    div
+      p © 2025 Your Website. All rights reserved.
+
+block scripts
+  script(src='/javascript/login.js', defer)

@@ -1,0 +1,42 @@
+extends base
+
+block head
+  link(rel='stylesheet', href='/css/overview.css')
+
+block content
+  // Navigation Bar
+  nav.navbar
+    if user
+      .logo My Website
+      ul.nav-links
+        li: a(href='#') Home
+        li: a(href='/me') #{user.name.split(' ')[0]}
+        li: a.FromOverview(href='#') logout
+        li: a(href='/loginpage') login
+    else 
+      .logo My Website
+      ul.nav-links
+        li: a(href='#') Home
+        li: a(href='#') About
+        li: a(href='#') Services
+        li: a(href='/loginpage') login
+
+  // Main Content
+  .container
+    h1 Welcome to Our Website
+    p Click on one of the image buttons below to explore more:
+
+    // Image Buttons
+    .button-container
+      .button_1.image-button(onclick="buttonClicked('Button 1')", data-candidate-id=image1.id)
+        img(src=image1.photo, style='width: 220px; height: 220px;')
+        .button-text Our Products
+
+      .button_2.image-button(onclick="buttonClicked('Button 2')", data-candidate-id=image2.id)
+        img(src=image2.photo, style='width: 220px; height: 220px;')
+        .button-text Our Services
+
+block scripts
+  script(src='/javascript/overview.js', defer)
+  script(src='/javascript/login.js', defer)
+  
