@@ -114,4 +114,6 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
     title: 'Your account',
     user: updateUser
   });
+
+  console.log('Hello world');
 });
