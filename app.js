@@ -78,7 +78,7 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
-app.use('/ranking-people.vercel.app', candidateRouter);
+app.use('/', candidateRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
